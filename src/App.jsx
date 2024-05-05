@@ -1,17 +1,28 @@
-import React from "react";
-import ReactDOM from "react-dom";
-// import { Footer } from "./Footer";
-// import { HomeContent } from "./HomePageComponent";
-import { Header } from "./Header";
+import React from 'react';
+import {Header} from './Header';
+import { Footer } from './Footer';
+import './App.scss';
+import Home from './components/pages/Home';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Services from './components/pages/Services';
+import Products from './components/pages/Products';
+import SignUp from './components/pages/SignUp';
 
-import  styles from "./App.scss";
-
-const App = () => (
-  <><div>ABC</div><div className={styles.container}>
-        <Header app='HOME HEADER APPP ' />
-        {/* <HomeContent /> */}
-        {/* <Footer /> */}
-    </div></>
-);
+function App() {
+  return (
+    <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/services' component={Services} />
+          <Route path='/products' component={Products} />
+          <Route path='/sign-up' component={SignUp} />
+        </Switch>
+        <Footer />
+      </Router>
+    </>
+  );
+}
 
 export default App;
